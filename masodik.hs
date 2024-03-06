@@ -81,6 +81,9 @@ szamOsszege2 n = max n 0
         tmp1 = n `mod` 10
         tmp2 = n `div` 10
 
+--valami
+
+
 main :: IO ()
 main = do
   putStr ("Szam szamjegyeinek szorzata: ")
