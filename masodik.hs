@@ -63,6 +63,24 @@ szamszorzata2 n = max n 1
         tmp1 = n `mod` 10
         tmp2 = n `div` 10
 
+szamOsszege1 :: (Integral a) => a -> a
+szamOsszege1 n
+  | n < 10 = n
+  | otherwise = tmp1 + szamOsszege1 tmp2
+  where
+    tmp1 = n `mod` 10
+    tmp2 = n `div` 10
+
+szamOsszege2 :: (Integral a) => a -> a
+szamOsszege2 n = max n 0
+  where
+    aux n res
+      | n < 10 = res + n
+      | otherwise = aux tmp2 (res + tmp1)
+      where
+        tmp1 = n `mod` 10
+        tmp2 = n `div` 10
+
 main :: IO ()
 main = do
   putStr ("Szam szamjegyeinek szorzata: ")
