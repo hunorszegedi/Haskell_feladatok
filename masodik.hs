@@ -83,7 +83,28 @@ szamOsszege2 n = max n 0
 
 --valami
 
+szamjegySzam1 n
+  | n < 10 = 1
+  | otherwise = 1 + szamjegySzam1 tmp2
+  where
+    tmp2 = n `div` 10
 
+szamjegySzam2 n = max n 0
+  where
+    aux n res
+      | n < 10 = res + 1
+      | otherwise = aux tmp2 (res + 1)
+      where
+        tmp2 = n `div` 10
+
+--legnagyobb szamjegy max szamjegy
+maxSzamjegy1 n 
+  | n < 10 = n 
+  | otherwise = max tmp1 (maxSzamjegy1 tmp2)
+  where
+    tmp1 = n `mod` 10
+    tmp2 = n `div` 10
+    
 main :: IO ()
 main = do
   putStr ("Szam szamjegyeinek szorzata: ")
