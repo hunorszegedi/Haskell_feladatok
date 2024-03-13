@@ -156,9 +156,23 @@ fibonacci2 n = aux n (0, 1)
 fibSzamjegyekszama :: (Show a, Integral a) => a -> Int
 fibSzamjegyekszama n = length $ show $ fibonacci2 n
 
-fibSzamjegyekszamaFG :: (Show a, Integral a) => a -> (a -> a) -> Int --(a -> a) ez a fuggveny tipusa, figyelni erre! valamibol lesz valami
+fibSzamjegyekszamaFG :: (Show a, Integral a) => a -> (a -> a) -> Int -- (a -> a) ez a fuggveny tipusa, figyelni erre! valamibol lesz valami
 fibSzamjegyekszamaFG n fg = length $ show $ fg n -- high order function, a masodik paramtere egy fuggveny
--- zarojelen beluli (a -> a) az a fuggveny 
+-- zarojelen beluli (a -> a) az a fuggveny
+
+-- mapek
+fibSzamokSzJ :: (Show a, Integral a) => [a] -> [Int]
+fibSzamokSzJ = map fibSzamjegyekszama -- a fibSzamjegyekszama fuggveny alkalmazva lesz az ls lista minden elemere
+
+fibSzamok = map fibonacci2 -- a fibonacci2 fuggveny alkalmazva lesz az ls lista minden elemere
+-- fibSzamok [10, 20, 30, 40, 50]
+
+maxSzamjegyLista = map maxSzamjegy2
+
+-- maxSzamjegyLista [123, 456, 789, 123456789]
+
+maxSzamjegyLC :: Integral a => [a] -> [a]
+maxSzamjegyLC ls = [maxSzamjegy1 x | x <- ls]
 
 main :: IO ()
 main = do
