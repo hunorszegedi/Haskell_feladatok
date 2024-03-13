@@ -124,6 +124,35 @@ maxSzamjegy2 n = aux n 0
         tmp1 = n `mod` 10
         tmp2 = n `div` 10
 
+-- labor 4
+
+-- exponencialis futasideju algoritmus
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci (n - 1) + fibonacci (n - 2)
+
+-- :: Int -> Int
+-- :: Integer -> Integer
+-- Integral osztalyhoz tartozik az Int es az Integer is
+fibonacci1 :: (Integral a) => a -> a
+fibonacci1 n = t1
+  where
+    (t1, t2) = aux n
+    aux :: (Integral a) => a -> (a, a)
+    aux n
+      | n == 0 = (0, 1)
+      | otherwise = (a + b, a)
+      where
+        (a, b) = aux (n - 1)
+
+fibonacci2 :: (Integral a) => a -> a
+fibonacci2 n = aux n (0, 1)
+  where
+    aux :: (Integral a) => a -> (a, a) -> a
+    aux n (t1, t2)
+      | n == 0 = t1
+      | otherwise = aux (n - 1) (t2, t1 + t2)
+
 main :: IO ()
 main = do
   putStr ("Szam szamjegyeinek szorzata: ")
