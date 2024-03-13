@@ -153,6 +153,13 @@ fibonacci2 n = aux n (0, 1)
       | n == 0 = t1
       | otherwise = aux (n - 1) (t2, t1 + t2)
 
+fibSzamjegyekszama :: (Show a, Integral a) => a -> Int
+fibSzamjegyekszama n = length $ show $ fibonacci2 n
+
+fibSzamjegyekszamaFG :: (Show a, Integral a) => a -> (a -> a) -> Int --(a -> a) ez a fuggveny tipusa, figyelni erre! valamibol lesz valami
+fibSzamjegyekszamaFG n fg = length $ show $ fg n -- high order function, a masodik paramtere egy fuggveny
+-- zarojelen beluli (a -> a) az a fuggveny 
+
 main :: IO ()
 main = do
   putStr ("Szam szamjegyeinek szorzata: ")
