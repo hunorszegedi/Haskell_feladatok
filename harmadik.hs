@@ -1,3 +1,4 @@
+import GHC.Unit.Database (DbModule(dbModuleName))
 myLength  [] = 0
 myLength  (k : ve) = 1 + myLength ve
 
@@ -54,7 +55,110 @@ myMinimum2_v2 ls
                     k = head ls
                     ve = tail ls
 
+myIndex :: [a] -> Int -> a
+myIndex [] _ = error "Hiba"
+myIndex ls 0 = head ls
+myIndex ls i 
+    | i < 0 = error "Hiba"
+    | otherwise = myIndex (tail ls) (i - 1)
 
+myConcat :: [a] -> [a] -> [a]
+myConcat [] ls2 = ls2 
+myConcat ls1 ls2 = head ls1 : myConcat (tail ls1) ls2
+
+myConcate2 ls1 ls2
+  | null ls1 = ls2
+  | otherwise = myConcate2 (init ls1) (t:ls2)
+    where
+      t = last ls1
+
+proba1 ls 
+  | null ls = []
+  | otherwise = k : proba1 ve
+    where
+      k = head ls
+      ve = tail ls
+
+proba2 ls = aux ls []
+  where 
+    aux ls rels 
+      | null ls = rels 
+      | otherwise = aux ve (k:rels)
+        where
+          k = head ls
+          ve = tail ls
+
+myInit ls 
+  | null ls = error "Hiba"
+  | null ve = [] -- A bemeneti lista egy elembol all
+  | otherwise = k : myInit ve
+    where
+      k = head ls
+      ve = tail ls
+
+myLast ls 
+  | null ls = error "Hiba"
+  | null ve = k
+  | otherwise = myLast ve
+    where
+      k = head ls
+      ve = tail ls
+
+palindrom ls 
+  | null ls = True
+  | null ve = True
+  | k == l = palindrom (init (tail ls)) 
+  | otherwise = False
+    where
+      k = head ls
+      l = last ls
+      ve = tail ls
+
+palindrom2 [] = True 
+palindrom2 [_] = True 
+palindrom2 (k : ve)
+  | k == last ve = palindrom2 (init ve)
+  | otherwise = False
+
+palindrom3 ls = reverse ls == ls -- reverse fuggveny
+
+myMove ls = tail ls ++ [head ls]
+
+atlag1 [] = error "Hiba URES LISTA"
+atlag1 ls = sum ls / fromIntegral (length ls)
+
+atlag2 [] = error "Hiba URES LISTA"
+atlag2 ls = osszeg / db
+  where 
+    (osszeg, db) = atlag2' ls 
+    atlag2' ls 
+      | null ls = (0,0)
+      | otherwise = (osszeg + k, db + 1)
+        where
+          k = head ls
+          ve = tail ls
+          (osszeg, db) = atlag2' ve
+
+
+atlag3 [] = error "Hiba URES LISTA"
+atlag3 ls = osszeg / db
+  where
+    (osszeg,db) = atlag3' ls (0,0)
+    atlag3' ls (osszeg,db)
+      | null ls = (osszeg, db) 
+      | otherwise = atlag3' ve (osszeg + k, db + 1)
+        where 
+          k = head ls 
+          ve = tail ls 
+
+-- filter (>5) [4,6,10,9,11]
+-- filter (/= 'a') "Sapienita"
+-- filter odd [4,6,10,3,4]
+-- atlag3 (filter (>5) [4,6,10,9,11])
+-- (atlag3.filter (>5)) [4,6,10,9,11] 
+
+atlagFilter fg = atlag3 . filter fg 
+-- atlagFilter (>5)[5,4,41,5,66,6] 
 
 -- main :: IO ()
 -- main = do
