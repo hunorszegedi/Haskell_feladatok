@@ -54,6 +54,8 @@ myMinimum2_v2 ls
                     k = head ls
                     ve = tail ls
 
+
+
 -- main :: IO ()
 -- main = do
 --   putStr ("")
