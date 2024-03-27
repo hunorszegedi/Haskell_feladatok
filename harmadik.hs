@@ -249,5 +249,5 @@ mainOsztok n = do
   -- mapM_ (print . fst) reszlegesEredmeny
   mapM_ myPrint reszlegesEredmeny
   putStrLn ""
-  where 
-    myPrint (x,y) = putStr $ show x ++ " "
+  where
+    myPrint (x, y) = putStr $ show x ++ " "
