@@ -251,3 +251,4 @@ mainOsztok n = do
   putStrLn ""
   where
     myPrint (x, y) = putStr $ show x ++ " "
+
