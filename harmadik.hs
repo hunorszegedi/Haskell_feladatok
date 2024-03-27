@@ -164,3 +164,17 @@ atlagFilter fg = atlag3 . filter fg
 -- main = do
 --   putStr ("")
 --   print ()
+
+parosNegyzet n = take n [x*x | x <- [0,2..]]
+-- [0,2..] a paros szamok vegtelen listaja
+
+parosNegyzet1 n = takeWhile (<n) [x*x | x <- [0,2..]]
+-- n-nel kisebbeket hatarozza meg
+
+-- aze elso 1 2 2 3 3 3 4 4 4 4 ...
+replicateSzamok n = take n (aux 1)
+  where aux i = replicate i i ++ aux (i+1)
+  -- igy az aux egy vegtelen fuggveny kiertekelest vegez
+  
+
+
