@@ -82,3 +82,22 @@ mainOsztok n = do
   where
     myPrint (x, y) = putStr $ show x ++ " "
 
+
+-- adott szam legnagyobb paratlan osztoja, ami nem egyenlo a szammal
+keresParatlanOszto nr =  head [x | x <- [d, d -2 .. 1], mod nr x == 0]
+    where 
+        temp = div nr 2
+        d = if even temp then temp -1 else temp
+
+szamjegyekSzama1 nr = length $ show nr --10-es szamrendszerben
+
+nrToBaseP nr p = aux nr p[]
+    where 
+        aux nr p ls 
+            | nr == 0 = ls
+            | otherwise = aux ujNr p (k:ls)
+                where 
+                    k = mod nr p 
+                    ujNr = div nr p
+
+feladat4 nr p = length $ nrToBaseP nr p
