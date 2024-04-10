@@ -1,4 +1,6 @@
 import Distribution.PackageDescription (libVersionNumber)
+import Prelude
+import Prelude ((++))
 
 -- splitAt 3 [1,2,3,4,5]
 -- A splitAt függvény egy listát két részre bont egy adott indexnél.
