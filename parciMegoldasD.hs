@@ -78,6 +78,11 @@ main4 = do
     putStrLn $ "Az autok szama: " ++ show db
     putStrLn $ "Az osszbevetel: " ++ show osszBevetel
         where 
-            op (x, y, z, w) (db, b) = (db + w, b + z)
+            op (x, y, z, w) (db, b) = (db + w, b + z*w)
 
-    
+main4_ = do
+    let autok = felB autokls "VW"
+    let db = sum [t4 | (t1, t2, t3, t4) <- autok]
+    let osszBevetel = sum [t3*t4 | (_, _, t3, t4) <- autok]
+    putStrLn $ "Az autok szama: " ++ show db
+    putStrLn $ "Az osszbevetel: " ++ show osszBevetel
