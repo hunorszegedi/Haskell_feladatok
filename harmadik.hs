@@ -69,6 +69,7 @@ myConcat :: [a] -> [a] -> [a]
 myConcat [] ls2 = ls2
 myConcat ls1 ls2 = head ls1 : myConcat (tail ls1) ls2
 
+
 myConcate2 ls1 ls2
   | null ls1 = ls2
   | otherwise = myConcate2 (init ls1) (t : ls2)
