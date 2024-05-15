@@ -1,0 +1,2 @@
+-- feladat
+-- II. 
